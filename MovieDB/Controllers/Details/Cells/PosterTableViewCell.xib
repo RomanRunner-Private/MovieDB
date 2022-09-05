@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="PosterTableViewCell" rowHeight="502" id="KGk-i7-Jjw" customClass="PosterTableViewCell" customModule="MovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="502"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="502"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aBr-xb-DLg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="426"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTz-bd-Duo">
+                        <rect key="frame" x="16" y="434" width="288" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="DoD-S2-Lff"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkm-JG-hdu">
+                        <rect key="frame" x="16" y="463" width="288" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="o2W-Bd-Z4r"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="mkm-JG-hdu" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1ue-4i-Q3i"/>
+                    <constraint firstAttribute="bottom" secondItem="mkm-JG-hdu" secondAttribute="bottom" constant="18" id="36J-AI-oB0"/>
+                    <constraint firstItem="aBr-xb-DLg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5g0-dE-3ZS"/>
+                    <constraint firstItem="hTz-bd-Duo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="5qm-QN-yZd"/>
+                    <constraint firstItem="mkm-JG-hdu" firstAttribute="top" secondItem="hTz-bd-Duo" secondAttribute="bottom" constant="8" symbolic="YES" id="RUu-wh-W8u"/>
+                    <constraint firstItem="mkm-JG-hdu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="UjB-VM-Uc2"/>
+                    <constraint firstAttribute="trailing" secondItem="aBr-xb-DLg" secondAttribute="trailing" id="fbR-Cm-MtC"/>
+                    <constraint firstItem="hTz-bd-Duo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gUV-eR-exa"/>
+                    <constraint firstItem="hTz-bd-Duo" firstAttribute="top" secondItem="aBr-xb-DLg" secondAttribute="bottom" constant="8" symbolic="YES" id="nJg-3H-b39"/>
+                    <constraint firstItem="aBr-xb-DLg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rGa-by-skR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="posterImageView" destination="aBr-xb-DLg" id="3XK-X4-9wS"/>
+                <outlet property="releaseDateLabel" destination="hTz-bd-Duo" id="wXS-Im-VFL"/>
+                <outlet property="votesLabel" destination="mkm-JG-hdu" id="d21-OJ-yLk"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="113.16964285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

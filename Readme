@@ -1,1 +1,25 @@
-Test project
+
+===>> TECH STACK <<===
+
+- Swift 5.5
+- Simple MVVM + Configurator + Coordinator
+- POP
+- Tried to follow SOLID 
+- CoreData (In projects I prefer to use Realm)
+- URLSession (In projects I prefer to use Moya+Alamofire)
+- Async/Await
+- DI (aggregation/composition)
+- ...
+
+===>> DISCLIMER <<===
+
+1) I've written it using only out-of-the-box approaches as to avoid using Pods/Spm/Carthage or something else third-party frameworks for development. It was done with respect to code reviewers that they won't waste time for project setup.
+   I try to not use dependencies whenever it possible.
+2) Im aware about well-know bugs I have by this moment that wasn't fixed due to time absence.
+3) I would use more efficient approaches so to have more readable codebase If I would have more time.
+4) Despite of there are only two screens in the project there are a lot of small chunks of logic that should be considered while develop of project architecture. It wasn't done.
+5) Needs refactoring.
+6) Protocols not fully used.
+7) I didn't use generics so to keep codebase clearer.
+
+18 hours was spent for development (more or less)

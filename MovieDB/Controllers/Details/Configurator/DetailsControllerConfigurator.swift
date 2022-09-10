@@ -17,9 +17,9 @@ class DetailsControllerConfigurator {
     func assembleAndDisplay(data: Result) {
         let controller: DetailsViewController = .instantiate()
         let urlBuilder = URLBuilder()
-        let ImageProcessing = ImageProcessing()
+        let imageProcessing = ImageProcessing()
         let service = NetworkService(urlBuilder: urlBuilder,
-                                     ImageProcessing: ImageProcessing)
+                                     imageProcessing: imageProcessing)
         controller.viewModel = .init(coordinator: coordinator,
                                      networkService: service,
                                      data: data)

@@ -22,11 +22,11 @@ final class NetworkService: NetworkServiceProtocol {
     
     private let decoder = JSONDecoder()
     private let urlBuilder: URLBuilder
-    private let ImageProcessing: ImageProcessing
+    private let imageProcessing: ImageProcessing
     
-    init(urlBuilder: URLBuilder, ImageProcessing: ImageProcessing) {
+    init(urlBuilder: URLBuilder, imageProcessing: ImageProcessing) {
         self.urlBuilder = urlBuilder
-        self.ImageProcessing = ImageProcessing
+        self.imageProcessing = imageProcessing
     }
     
     private func makeMainRequest(listNumber: Int, page: Int) -> URLRequest {
@@ -52,7 +52,7 @@ final class NetworkService: NetworkServiceProtocol {
     }
     
     func loadImage(by endpoint: String) async throws ->  AnyObject? {
-        let image = try await ImageProcessing.image(from: urlBuilder.constructURL(for: .image(endpoint: endpoint)))
+        let image = try await imageProcessing.image(from: urlBuilder.constructURL(for: .image(endpoint: endpoint)))
         return image
     }
     

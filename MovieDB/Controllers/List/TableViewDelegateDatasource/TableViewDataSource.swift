@@ -6,18 +6,28 @@
 //
 import UIKit
 
+fileprivate enum DetailsTableSections: Int {
+    case poster = 0
+    case loading
+}
+
 extension MovieListViewController: UITableViewDataSource {
     
-    func checkLoadingCellDisplayNeeded() -> Bool {
+    func loadingCellDisplayNeeded() -> Bool {
         return (viewModel?.items.count ?? 0 < viewModel?.totalResults ?? 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        let sectionName = DetailsTableSections(rawValue: section)
+        switch sectionName {
+        case .poster:
             return viewModel?.items.count ?? 0
-        } else if section == 1 && checkLoadingCellDisplayNeeded() {
-            return 1
-        } else {
+        case .loading:
+            if loadingCellDisplayNeeded() {
+                return 1
+            }
+            return 0
+        default:
             return 0
         }
     }
@@ -35,20 +45,24 @@ extension MovieListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        let sectionName = DetailsTableSections(rawValue: indexPath.section)
+        switch sectionName {
+        case .poster:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell",
                                                      for: indexPath) as! MovieTableViewCell
             if let viewModel = viewModel {
                 cell.configure(with: viewModel.items[indexPath.row], viewModel: viewModel)
             }
             return cell
-        } else {
+        case .loading:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell",
                                                      for: indexPath) as! LoadingCell
             if let viewModel = viewModel {
                 cell.setupCell(active: viewModel.items.count == viewModel.totalResults ? false : true)
             }
             return cell
+        default:
+            return UITableViewCell()
         }
     }
     

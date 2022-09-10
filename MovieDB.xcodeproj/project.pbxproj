@@ -127,7 +127,7 @@
 				B5C0F82A28C3AA7D0060DD76 /* Coordinators */,
 				B5C0F82B28C3AAB70060DD76 /* Services */,
 				B5C0F82C28C3AAEA0060DD76 /* Extensions */,
-				B5D1903C28C64AF900676CAB /* Constance */,
+				B5D1903C28C64AF900676CAB /* Constants */,
 			);
 			path = MovieDB;
 			sourceTree = "<group>";
@@ -372,12 +372,12 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
-		B5D1903C28C64AF900676CAB /* Constance */ = {
+		B5D1903C28C64AF900676CAB /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				B5D1903A28C63B8600676CAB /* AppConstants.swift */,
 			);
-			path = Constance;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -24,7 +24,7 @@ final class MovieListConfigurator: MovieListConfiguratorProtocol {
         controller.modalPresentationStyle = .overFullScreen
         let urlBuilder = URLBuilder()
         let ImageProcessing = ImageProcessing()
-        let service = NetworkService(urlBuilder: urlBuilder, ImageProcessing: ImageProcessing)
+        let service = NetworkService(urlBuilder: urlBuilder, imageProcessing: ImageProcessing)
         controller.viewModel = .init(coordinator: coordinator, networkService: service)
         coordinator.display(controller: controller)
     }

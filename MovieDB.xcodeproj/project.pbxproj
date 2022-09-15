@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50C5A4228D06BD500EE8B0F /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C5A4028D06BD500EE8B0F /* EmptyTableViewCell.swift */; };
+		B50C5A4328D06BD500EE8B0F /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B50C5A4128D06BD500EE8B0F /* EmptyTableViewCell.xib */; };
 		B5C0F7F228C341FC0060DD76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0F7F128C341FC0060DD76 /* AppDelegate.swift */; };
 		B5C0F7FE28C341FE0060DD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C0F7FD28C341FE0060DD76 /* Assets.xcassets */; };
 		B5C0F80128C341FE0060DD76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C0F7FF28C341FE0060DD76 /* LaunchScreen.storyboard */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50C5A4028D06BD500EE8B0F /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		B50C5A4128D06BD500EE8B0F /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		B5C0F7EE28C341FC0060DD76 /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0F7F128C341FC0060DD76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0F7FD28C341FE0060DD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +106,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50C5A3F28D06A2000EE8B0F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B5C0F80C28C345C60060DD76 /* MovieListViewCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B50C5A4428D06BDB00EE8B0F /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				B50C5A4028D06BD500EE8B0F /* EmptyTableViewCell.swift */,
+				B50C5A4128D06BD500EE8B0F /* EmptyTableViewCell.xib */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		B5C0F7E528C341FC0060DD76 = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +156,6 @@
 		B5C0F82A28C3AA7D0060DD76 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				B5C0F80C28C345C60060DD76 /* MovieListViewCoordinator.swift */,
 				B5C0F82628C39FEF0060DD76 /* BaseCoordinator.swift */,
 				B5C0F82828C3A02E0060DD76 /* MainCoordinator.swift */,
 			);
@@ -173,6 +193,7 @@
 				B5C0F83028C3AB4E0060DD76 /* CellData */,
 				B5C0F82E28C3AB2E0060DD76 /* Model */,
 				B5C0F83128C3AB630060DD76 /* Configurator */,
+				B50C5A3F28D06A2000EE8B0F /* Coordinator */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -230,6 +251,7 @@
 			children = (
 				B5C0F84C28C4A4100060DD76 /* LoadingCell */,
 				B5C0F83E28C4A1860060DD76 /* MainCell */,
+				B50C5A4428D06BDB00EE8B0F /* Empty */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50C5A4328D06BD500EE8B0F /* EmptyTableViewCell.xib in Resources */,
 				B5C0F85628C4E7370060DD76 /* DetailsViewController.storyboard in Resources */,
 				B5C0F81B28C366940060DD76 /* MovieListViewController.storyboard in Resources */,
 				B5C0F80128C341FE0060DD76 /* LaunchScreen.storyboard in Resources */,
@@ -461,6 +484,7 @@
 				B5C0F83728C3D4E30060DD76 /* ImageProcessing.swift in Sources */,
 				B5C0F81328C35BA50060DD76 /* MovieEntity.swift in Sources */,
 				B5C0F81F28C3875D0060DD76 /* MovieData.swift in Sources */,
+				B50C5A4228D06BD500EE8B0F /* EmptyTableViewCell.swift in Sources */,
 				B5C0F82228C389A40060DD76 /* MovieTableViewCell.swift in Sources */,
 				B5C0F81928C362410060DD76 /* ViewController+Instantiate.swift in Sources */,
 				B5C0F80928C343DB0060DD76 /* MovieListViewController.swift in Sources */,

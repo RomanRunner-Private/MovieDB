@@ -7,9 +7,9 @@
 
 import UIKit
 
-class LoadingViewController: UIViewController {
+final class LoadingViewController: UIViewController {
 
-    var loadingActivityIndicator: UIActivityIndicatorView = {
+   private var loadingActivityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .large
         indicator.color = .white
@@ -23,7 +23,7 @@ class LoadingViewController: UIViewController {
         return indicator
     }()
     
-    var blurEffectView: UIVisualEffectView = {
+ private  var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.alpha = 0.8
@@ -40,7 +40,7 @@ class LoadingViewController: UIViewController {
         setupView()
     }
     
-    func setupView() {
+    private func setupView() {
         
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         blurEffectView.frame = self.view.bounds

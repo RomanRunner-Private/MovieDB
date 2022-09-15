@@ -5,7 +5,7 @@
 //  Created by Roman Bigun on 03.09.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol MovieListConfiguratorProtocol {
     
@@ -20,12 +20,20 @@ final class MovieListConfigurator: MovieListConfiguratorProtocol {
     }
     
     func assembleAndDisplay() {
-        let controller: MovieListViewController = .instantiate()
-        controller.modalPresentationStyle = .overFullScreen
         let urlBuilder = URLBuilder()
         let ImageProcessing = ImageProcessing()
         let service = NetworkService(urlBuilder: urlBuilder, imageProcessing: ImageProcessing)
-        controller.viewModel = .init(coordinator: coordinator, networkService: service)
+        let viewModel: MovieListViewModel = .init(coordinator: coordinator, networkService: service)
+        let storyboardName = "MovieListViewController"
+        
+        let controller = UIStoryboard(name: storyboardName,bundle: .main)
+            .instantiateViewController(identifier: storyboardName,
+                                       creator: { coder -> MovieListViewController? in
+            MovieListViewController(coder: coder,
+                                    viewModel: viewModel)
+        })
+        
+        controller.modalPresentationStyle = .overFullScreen
         coordinator.display(controller: controller)
     }
 }

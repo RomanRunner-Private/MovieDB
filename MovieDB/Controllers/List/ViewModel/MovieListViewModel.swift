@@ -30,6 +30,10 @@ final class MovieListViewModel: MovieListViewModelProtocol {
         self.networkService = networkService
     }
     
+    func displayAlert() {
+        coordinator.displayAlert()
+    }
+    
     func getMoviesFromLocalStorage(completion: @escaping ((Bool) -> Void)) {
         for item in databaseService.loadMovies() {
             let itemToAdd = Result(adult: false,

@@ -10,7 +10,7 @@ import UIKit
 extension MovieListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = viewModel else { return }
+        guard viewModel.items.count > 0 else { return }
         MainCoordinator(navigationController).routeTo(target: .movieDetail(data: viewModel.items[indexPath.row]))
     }
 }

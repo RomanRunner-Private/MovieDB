@@ -7,42 +7,55 @@
 
 import UIKit
 
-class MovieListViewController: UIViewController {
+final class MovieListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    var viewModel: MovieListViewModel?
+    let viewModel: MovieListViewModel
     
-    var loadingVC: LoadingViewController?
+    private var loadingVC: LoadingViewController?
+   
+    private let refreshControl = UIRefreshControl()
+    
+    init?(coder: NSCoder, viewModel: MovieListViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("Use `init(coder:viewModel:)` to initialize an `MovieListViewController` instance.")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         setupTable()
+        setupRefresh()
         registerCells()
-        displayLoadingController(present: true)
+        displayLoadingController(present: true, showHint: false)
+    }
+    
+    private func setupRefresh() {
+        refreshControl.tintColor = .red
+        refreshControl.attributedTitle = NSAttributedString(AttributedString("Loading..."))
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc private func refresh(_ sender: AnyObject) {
+        refreshControl.beginRefreshing()
         loadData()
     }
     
    private func loadData() {
-        viewModel?.getMoviesFromLocalStorage(completion: { [weak self] result in
+        viewModel.getMoviesFromLocalStorage(completion: { [weak self] result in
             guard let self = self else { return }
-            if result == true {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.displayLoadingController(present: false)
-                }
-            } else {
-                self.viewModel?.getMovies(completion: { [weak self] result in
-                    guard let self = self else { return }
-                    if result == true {
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                            self.displayLoadingController(present: false)
-                        }
-                    }
-                })
-            }
+            self.handleResponce(isSuccess: result)
         })
+    }
+    
+    private func displayHint() {
+        viewModel.displayAlert()
     }
     
     private func setupTable() {
@@ -53,20 +66,54 @@ class MovieListViewController: UIViewController {
     private func registerCells() {
         tableView.registerNib(MovieTableViewCell.self)
         tableView.registerNib(LoadingCell.self)
+        tableView.registerNib(EmptyTableViewCell.self)
     }
     
-    private func displayLoadingController(present: Bool) {
-        if present {
-            loadingVC = LoadingViewController()
+    private func handleResponce(isSuccess: Bool) {
+        if isSuccess == true {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                self.displayLoadingController(present: false, showHint: false)
+            }
         } else {
-            loadingVC?.dismiss(animated: true)
-            return
+            self.viewModel.getMovies(completion: { [weak self] result in
+                guard let self = self else { return }
+                if result == true {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                        self.displayLoadingController(present: false, showHint: false)
+                    }
+                } else {
+                    self.displayLoadingController(present: false, showHint: true)
+                }
+            })
         }
-        
-        if let loadingController = loadingVC {
-            loadingController.modalPresentationStyle = .overCurrentContext
-            loadingController.modalTransitionStyle = .crossDissolve
-            self.present(loadingController, animated: true)
+    }
+}
+
+extension MovieListViewController {
+    private func displayLoadingController(present: Bool, showHint: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if present {
+                self.loadingVC = LoadingViewController()
+            } else {
+                self.loadingVC?.dismiss(animated: true, completion: {
+                    if showHint {
+                        self.displayHint()
+                    }
+                })
+                return
+            }
+            
+            if let loadingController = self.loadingVC {
+                loadingController.modalPresentationStyle = .overCurrentContext
+                loadingController.modalTransitionStyle = .crossDissolve
+                self.present(loadingController, animated: true)
+            }
         }
     }
 }

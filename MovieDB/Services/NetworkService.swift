@@ -23,6 +23,7 @@ final class NetworkService: NetworkServiceProtocol {
     private let decoder = JSONDecoder()
     private let urlBuilder: URLBuilder
     private let imageProcessing: ImageProcessing
+    private let session = URLSession.shared
     
     init(urlBuilder: URLBuilder, imageProcessing: ImageProcessing) {
         self.urlBuilder = urlBuilder
@@ -37,7 +38,7 @@ final class NetworkService: NetworkServiceProtocol {
     }
     
     func getMoviesList(listNumber: Int, page: Int, completion: ((MovieEntity?)->())?) {
-        URLSession.shared.dataTask(with: makeMainRequest(listNumber: listNumber, page: page)) { data, response, error in
+        session.dataTask(with: makeMainRequest(listNumber: listNumber, page: page)) { data, response, error in
             if let data = data {
                 if let list = try? self.decoder.decode(MovieEntity.self, from: data) {
                     completion?(list)
@@ -47,6 +48,7 @@ final class NetworkService: NetworkServiceProtocol {
                 }
             } else if let error = error {
                 self.errorHandler(error: error)
+                completion?(nil)
             }
         }.resume()
     }

@@ -23,17 +23,12 @@ class MovieTableViewCell: UITableViewCell {
         movieTitleLabel.text = data.title
         
         Task {
-            
-            // MARK: - in case we are having an image in the local storage
             if let imageData = data.imageData {
                 DispatchQueue.main.async {
-                    // MARK: - async image converter from Data
                     self.posterImageView.image = UIImage(data: imageData)
                 }
                 return
             }
-            
-            // MARK: - have just loaded model from the moviedb backend
             let image = await viewModel.loadImage(by: data.posterPath) as? UIImage
             posterImageView.image = image
         }

@@ -16,10 +16,10 @@ protocol DetailsControllerCoordinatorProtocol {
 class DetailsControllerCoordinator: BaseCoordinator, DetailsControllerCoordinatorProtocol {
     
     func display(controller: DetailsViewController) {
-        navigationController?.pushViewController(controller, animated: true)
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationItem.titleView?.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.white ]
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func backAction() {
